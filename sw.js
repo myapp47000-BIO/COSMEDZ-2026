@@ -1,5 +1,5 @@
 /* COSMADEDZ service worker — offline-first, cache versioned */
-const VERSION = "cosmadedz-v1.5.7";
+const VERSION = "cosmadedz-v1.5.10";
 const CORE = VERSION + "-core";
 const RUNTIME = VERSION + "-runtime";
 
@@ -53,8 +53,8 @@ self.addEventListener("fetch", event => {
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
 
-  // Never cache API/auth traffic.
-  if (url.pathname.startsWith("/api/")) return;
+  // Never cache API/auth traffic (also under a sub-path deployment).
+  if (url.pathname.indexOf("/api/") >= 0) return;
 
   // Navigations: network first, fall back to cached shell when offline.
   if (req.mode === "navigate") {

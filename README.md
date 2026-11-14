@@ -27,8 +27,23 @@ python server/server.py
 عند أول تشغيل تُنشأ قاعدة البيانات وتُولّد كلمة مرور المسؤول في `server/data/admin-password.txt`. راجع [`server/README.md`](./server/README.md) للإعداد والبريد (SMTP) وHTTPS.
 
 > يمكن أيضاً تقديم الملفات الثابتة فقط عبر `python -m http.server 8765` للتصفح دون تسجيل دخول، لكن طلب التفعيل/لوحة الإدارة يحتاجان خادم المصادقة.
+>
+> **وضع الاستضافة الثابتة:** إذا لم يكن الخادم متاحاً (GitHub Pages، Netlify، أو `file://`)، يكتشف التطبيق ذلك تلقائياً ويسمح بكل الدروس والوصفات والاختبارات والشهادة **بدون حساب**، ويُظهر شارة «نسخة عرض ثابتة». تبقى صفحة `#/login` ظاهرة لتشرح الفرق. عند تشغيل خادم المصادقة على النطاق نفسه، يعود التطبيق تلقائياً إلى وضع التفعيل الكامل.
 
 > ملاحظة: Service Worker/PWA يعمل بشكل صحيح عبر `http/https` (أو `localhost`)، وليس عبر فتح `index.html` مباشرة كملف. للنشر على الإنترنت يلزم HTTPS.
+
+### النشر على GitHub Pages
+
+1. انسخ **محتويات مجلد `cosmadedz-pwa/`** كاملة إلى جذر المستودع (وليس مجلد `server/` — فهو للاستضافة على خادم Python فقط):
+   ```text
+   index.html  manifest.json  sw.js  robots.txt
+   css/  js/  icons/
+   ```
+2. من إعدادات المستودع: **Settings → Pages → Deploy from a branch** ثم اختر `main` و`/ (root)`.
+3. افتح الرابط: `https://<user>.github.io/<repo>/` — يجب أن تظهر الصفحة الرئيسية مباشرة بشارة «نسخة عرض ثابتة».
+4. عند تحديث أي ملف، غيّر `VERSION` في `sw.js` ثم أعد التحميل (أو استخدم زر «تحديث الآن» في شريط التحديث).
+
+> GitHub Pages لا يشغّل Python، لذلك تسجيل الدخول وأكواد التفعيل غير متاحة هناك. إن أردت التفعيل الكامل على الإنترنت فاستضف `server/server.py` على خدمة تدعم Python (Render/Railway/VPS) وضع عنوانه في `window.COSD_API_BASE` قبل تحميل `js/auth-api.js`.
 
 ## البنية
 
@@ -114,4 +129,3 @@ cosmadedz-pwa/
 - التطبيق Vanilla HTML/CSS/JS + Hash Router.
 - العربية هي اللغة الأساسية؛ تُستخدم مصطلحات فرنسية/INCI عند الحاجة.
 - عند تعديل ملفات البيانات، تأكد من صحة JavaScript وأن مجموع نسب الوصفة ≈ 100% وأن `answer` في الاختبارات ضمن 0–3.
-![Image Alt](https://github.com/myapp47000-BIO/COSMEDZ-2026/blob/beb85d913bbb33267976224edf1cfb211aa4d55e/Gemini_Generated_Image_ocpaswocpaswocpa.jpg)

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="COSMADEDZ">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a2333"/>
+      <stop offset="0.55" stop-color="#8e4f5c"/>
+      <stop offset="1" stop-color="#c98a6a"/>
+    </linearGradient>
+    <linearGradient id="drop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe9dc"/>
+      <stop offset="1" stop-color="#e8b9a3"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="116" height="116" rx="34" fill="url(#bg)"/>
+  <circle cx="60" cy="60" r="36" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-dasharray="190 226" transform="rotate(-48 60 60)" opacity="0.96"/>
+  <path d="M60 43c0 0 12.5 14 12.5 22.5a12.5 12.5 0 0 1-25 0C47.5 57 60 43 60 43z" fill="url(#drop)"/>
+  <circle cx="87" cy="41" r="4.2" fill="#f0c9a8"/>
+  <circle cx="95" cy="55" r="2.6" fill="#f0c9a8" opacity="0.8"/>
+  <circle cx="36" cy="82" r="2.1" fill="#f0c9a8" opacity="0.65"/>
+</svg>
