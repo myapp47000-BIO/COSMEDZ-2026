@@ -114,3 +114,4 @@ cosmadedz-pwa/
 - التطبيق Vanilla HTML/CSS/JS + Hash Router.
 - العربية هي اللغة الأساسية؛ تُستخدم مصطلحات فرنسية/INCI عند الحاجة.
 - عند تعديل ملفات البيانات، تأكد من صحة JavaScript وأن مجموع نسب الوصفة ≈ 100% وأن `answer` في الاختبارات ضمن 0–3.
+![Image Alt](httpsgithub.commyapp47000-BIOLearn-with-Basma-blobcaec0c69e41aab4d06971d04b98862f33c22c31cGemini_Generated_Image_z6zthxz6zthxz6zt.jpg)
