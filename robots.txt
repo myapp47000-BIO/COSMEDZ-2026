@@ -1,0 +1,5 @@
+# COSMADEDZ — public training PWA
+User-agent: *
+Allow: /
+Disallow: /server/
+Disallow: /api/

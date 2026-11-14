@@ -1,0 +1,72 @@
+{
+  "name": "COSMADEDZ — تكوين صناعة التجميل والعناية بالجسم",
+  "short_name": "COSMADEDZ",
+  "description": "منصة تكوينية عربية احترافية في صناعة مستحضرات التجميل والعناية بالجسم: الأساسيات، المواد الأولية وتصنيفها الوظيفي، الوصفات، طرق التصنيع، الجودة والتشريع، وحاسبات الصياغة. تعمل دون إنترنت.",
+  "id": "/cosmadedz-pwa/",
+  "start_url": "./index.html#/home",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["education", "productivity", "lifestyle"],
+  "background_color": "#faf5f1",
+  "theme_color": "#b76e79",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "مسارات التكوين",
+      "short_name": "التكوين",
+      "description": "الدروس المنظمة من الأساسيات إلى المشروع",
+      "url": "./index.html#/learn",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "المواد الأولية",
+      "short_name": "المواد",
+      "description": "المكتبة الوظيفية للمواد وINCI",
+      "url": "./index.html#/materials",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "الوصفات",
+      "short_name": "الوصفات",
+      "description": "وصفات محسوبة مع حاسبة دفعة",
+      "url": "./index.html#/recipes",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "حاسبات المختبر",
+      "short_name": "المختبر",
+      "description": "دفعة، HLB، تخفيف، وتصبن",
+      "url": "./index.html#/lab",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
