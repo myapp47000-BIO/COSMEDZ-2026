@@ -114,5 +114,4 @@ cosmadedz-pwa/
 - التطبيق Vanilla HTML/CSS/JS + Hash Router.
 - العربية هي اللغة الأساسية؛ تُستخدم مصطلحات فرنسية/INCI عند الحاجة.
 - عند تعديل ملفات البيانات، تأكد من صحة JavaScript وأن مجموع نسب الوصفة ≈ 100% وأن `answer` في الاختبارات ضمن 0–3.
-![Image Alt][(https://github.com/myapp47000-BIO/COSMEDZ-2026/blob/beb85d913bbb33267976224edf1cfb211aa4d55e/Gemini_Generated_Image_ocpaswocpaswocpa.jpg)
-]
+![Image Alt][(https://github.com/myapp47000-BIO/COSMEDZ-2026/blob/beb85d913bbb33267976224edf1cfb211aa4d55e/Gemini_Generated_Image_ocpaswocpaswocpa.jpg)]
