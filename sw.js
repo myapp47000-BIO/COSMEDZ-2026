@@ -1,5 +1,5 @@
 /* COSMADEDZ service worker — offline-first, cache versioned */
-const VERSION = "cosmadedz-v1.5.10";
+const VERSION = "cosmadedz-v1.5.12";
 const CORE = VERSION + "-core";
 const RUNTIME = VERSION + "-runtime";
 
@@ -8,6 +8,7 @@ const APP_SHELL = [
   "./index.html",
   "./manifest.json",
   "./css/styles.css",
+  "./js/boot-guard.js",
   "./js/auth-api.js",
   "./js/i18n-data.js",
   "./js/i18n.js",
@@ -85,7 +86,7 @@ self.addEventListener("fetch", event => {
           caches.open(RUNTIME).then(c => c.put(req, copy)).catch(() => {});
         }
         return res;
-      }).catch(() => caches.match("./index.html"));
+      }).catch(() => new Response("", { status: 504, statusText: "Offline" }));
     })
   );
 });

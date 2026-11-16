@@ -358,12 +358,17 @@
       (authed ? '<button class="btn btn-ghost btn-block" style="margin-top:8px;color:var(--danger)" id="logoutBtn">' + ic('close') + ' تسجيل الخروج</button>' : '<a class="btn btn-primary btn-block" style="margin-top:12px" href="#/login">تسجيل الدخول</a>') +
       '</div>' +
       '<div class="panel"><h2>' + ic('target') + ' الإحصاءات</h2><div class="result-list">' + stats.map(function(s){ return '<div><span>'+s.l+'</span><b>'+s.v+'</b></div>'; }).join("") + '</div></div></div>' +
-      '<div class="panel no-print" style="margin-top:16px"><h2>' + ic('download') + ' البيانات</h2><p class="small muted">تصدير أو مسح التقدم المحفوظ على هذا المتصفح. مسح التقدم لا يحذف جلسة الدخول.</p><div class="btn-row" style="margin-top:10px"><button class="btn btn-soft" id="exportData">' + ic('download') + ' تصدير JSON</button><button class="btn btn-ghost" id="resetData" style="color:var(--danger)">' + ic('trash') + ' مسح التقدم</button></div></div>';
+      '<div class="panel no-print" style="margin-top:16px"><h2>' + ic('download') + ' البيانات</h2><p class="small muted">تصدير أو مسح التقدم المحفوظ على هذا المتصفح. مسح التقدم لا يحذف جلسة الدخول.</p><div class="btn-row" style="margin-top:10px"><button class="btn btn-soft" id="exportData">' + ic('download') + ' تصدير JSON</button><button class="btn btn-ghost" id="resetData" style="color:var(--danger)">' + ic('trash') + ' مسح التقدم</button><button class="btn btn-ghost" id="forceRefresh">' + ic('refresh') + ' ' + t('تحديث التطبيق') + '</button></div></div>';
     return { html: html, after: function(){
       var sn=qs('#saveName'); if(sn) sn.addEventListener('click', function(){ S.name = (qs('#profName').value||'').trim(); store.set('name', S.name); toast('تم حفظ الاسم'); });
       var lo=qs('#logoutBtn'); if(lo) lo.addEventListener('click', function(){ if(!confirm(t('تسجيل الخروج من هذا الجهاز؟'))) return; var done = C.logoutSession ? C.logoutSession() : Promise.resolve(); if (!C.logoutSession && C.clearSession) C.clearSession(); done.then(function(){ toast(t('تم تسجيل الخروج')); C.go('#/login'); }); });
       var ex=qs('#exportData'); if(ex) ex.addEventListener('click', function(){ var data={name:S.name,lessons:Array.from(S.lessons||[]),quizzes:S.quizzes,favs:Array.from(S.favs||[]),checklist:S.checklist,notes:S.notes,ts:new Date().toISOString()}; var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='cosmadedz-progress.json'; a.click(); toast('تم التصدير'); });
       var rs=qs('#resetData'); if(rs) rs.addEventListener('click', function(){ if(!confirm(t('مسح كل التقدم المحفوظ على هذا الجهاز؟'))) return; try{ Object.keys(localStorage).forEach(function(k){ if(k.indexOf('cosd_v1_')===0 && k.indexOf('session')<0) localStorage.removeItem(k); }); }catch(e){} toast('تم مسح التقدم'); setTimeout(function(){ location.reload(); }, 600); });
+      var fr=qs('#forceRefresh'); if(fr) fr.addEventListener('click', function(){
+        if (!confirm(t('سيتم تحديث ملفات التطبيق وإعادة التحميل. متابعة؟'))) return;
+        if (window.cosdRecover) window.cosdRecover();
+        else location.reload();
+      });
     }};
   };
 

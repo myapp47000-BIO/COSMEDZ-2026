@@ -1280,6 +1280,13 @@
       location.reload();
     });
     navigator.serviceWorker.register("sw.js").then(reg => {
+      const checkUpdate = () => { try { reg.update(); } catch (e) {} };
+      // Pick up a new deployment quickly instead of waiting for the next visit.
+      checkUpdate();
+      setInterval(checkUpdate, 30 * 60 * 1000);
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") checkUpdate();
+      });
       const offer = worker => {
         if (!worker) return;
         worker.addEventListener("statechange", () => {
