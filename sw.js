@@ -1,5 +1,6 @@
 /* COSMADEDZ service worker — offline-first, cache versioned */
-const VERSION = "cosmadedz-v1.5.12";
+const VERSION = "cosmadedz-v1.5.13";
+const BUILD = "1.5.13";
 const CORE = VERSION + "-core";
 const RUNTIME = VERSION + "-runtime";
 
@@ -7,19 +8,19 @@ const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
-  "./css/styles.css",
-  "./js/boot-guard.js",
-  "./js/auth-api.js",
-  "./js/i18n-data.js",
-  "./js/i18n.js",
-  "./js/app.js",
-  "./js/app-pages.js",
-  "./js/data-materials.js",
-  "./js/data-lessons.js",
-  "./js/data-recipes.js",
-  "./js/data-methods.js",
-  "./js/data-quizzes.js",
-  "./js/data-glossary.js",
+  "./css/styles.css?v=" + BUILD,
+  "./js/boot-guard.js?v=" + BUILD,
+  "./js/auth-api.js?v=" + BUILD,
+  "./js/i18n-data.js?v=" + BUILD,
+  "./js/i18n.js?v=" + BUILD,
+  "./js/app.js?v=" + BUILD,
+  "./js/app-pages.js?v=" + BUILD,
+  "./js/data-materials.js?v=" + BUILD,
+  "./js/data-lessons.js?v=" + BUILD,
+  "./js/data-recipes.js?v=" + BUILD,
+  "./js/data-methods.js?v=" + BUILD,
+  "./js/data-quizzes.js?v=" + BUILD,
+  "./js/data-glossary.js?v=" + BUILD,
   "./icons/icon.svg",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
@@ -31,7 +32,11 @@ self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CORE).then(cache =>
       Promise.allSettled(APP_SHELL.map(url => cache.add(new Request(url, { cache: "reload" }))))
-    )
+    ).then(() => {
+      // A previous worker means this is an update, not a first install:
+      // activate right away so nobody stays on an old cached shell.
+      if (self.registration.active) return self.skipWaiting();
+    })
   );
 });
 

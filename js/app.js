@@ -1279,7 +1279,7 @@
       refreshing = true;
       location.reload();
     });
-    navigator.serviceWorker.register("sw.js").then(reg => {
+    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then(reg => {
       const checkUpdate = () => { try { reg.update(); } catch (e) {} };
       // Pick up a new deployment quickly instead of waiting for the next visit.
       checkUpdate();
@@ -1300,6 +1300,12 @@
       };
       if (reg.waiting) offer(reg.waiting);
       reg.addEventListener("updatefound", () => offer(reg.installing));
+      // Some browsers report an already-waiting worker without a statechange
+      // event for it; surface the update action immediately.
+      if (reg.waiting && navigator.serviceWorker.controller) {
+        const bar = $("#updateBar");
+        if (bar) bar.hidden = false;
+      }
     }).catch(() => {});
   }
 

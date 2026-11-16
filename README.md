@@ -41,7 +41,7 @@ python server/server.py
    ```
 2. من إعدادات المستودع: **Settings → Pages → Deploy from a branch** ثم اختر `main` و`/ (root)`.
 3. افتح الرابط: `https://<user>.github.io/<repo>/` — يجب أن تظهر الصفحة الرئيسية مباشرة بشارة «نسخة عرض ثابتة».
-4. عند تحديث أي ملف، غيّر `VERSION` في `sw.js` ثم أعد التحميل (أو استخدم زر «تحديث الآن» في شريط التحديث).
+4. عند تحديث أي ملف، ارفع `VERSION` و`BUILD` في `sw.js` **وعدّل رقم `?v=` في `index.html`** (روابط CSS/JS) ثم أعد التحميل. هذا يمنع النسخ القديمة المخزّنة من الاستمرار.
 
 > GitHub Pages لا يشغّل Python، لذلك تسجيل الدخول وأكواد التفعيل غير متاحة هناك. إن أردت التفعيل الكامل على الإنترنت فاستضف `server/server.py` على خدمة تدعم Python (Render/Railway/VPS) وضع عنوانه في `window.COSD_API_BASE` قبل تحميل `js/auth-api.js`، واضبط على الخادم `COSD_ALLOW_ORIGIN` بأصل الواجهة (مثال: `https://myapp47000-bio.github.io`) — CORS مغلق افتراضياً، والتفاصيل في [`server/README.md`](./server/README.md).
 
